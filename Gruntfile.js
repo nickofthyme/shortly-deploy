@@ -28,9 +28,9 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      my_target: {
+      dist: {
         files: {
-          'dist/built.min.js': ['public/dist/built.js']
+          'public/dist/built.min.js': ['public/dist/built.js']
         }
       }
     },
@@ -38,20 +38,19 @@ module.exports = function(grunt) {
     eslint: {
       target: [
         'public/client/**/*.js'
-      ],
-      ignorePath: ['public/client/lib'] //TODO: make sure
+      ]
+      // ignorePath: ['public/client/lib'] //TODO: make sure
     },
 
     cssmin: {
-      target: {
-        files: [{
-          expand: true,
-          cwd: 'public',
-          src: ['*.css'],
-          dest: 'dist',
-          ext: '.min.css'
-        }]
-      }
+      options: {
+        keepSpecialComments: 0
+      },
+      dist: {
+        files: {
+          'public/dist/style.min.css': 'public/style.css'
+        }
+      },
     },
 
     watch: {
@@ -113,10 +112,10 @@ module.exports = function(grunt) {
     // add your production server task here
     if (grunt.option('prod')) {
       // server public deployment
-      grunt.task.run(['concat', 'uglify', 'cssmin', 'server-dev']);
+      grunt.task.run(['concat', 'uglify', 'cssmin', 'shell']);
     } else {
       // local deployment
-      grunt.task.run([ 'server-dev' ]);
+      grunt.task.run(['build', 'concat', 'uglify', 'cssmin', 'server-dev' ]);
     }
   });
 
