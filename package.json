@@ -9,9 +9,10 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "grunt build && grunt upload",
+    "start": "grunt upload --prod",
     "test": "grunt test",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "prod": "grunt upload --prod"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
