@@ -24,27 +24,22 @@ kitty.save(function (err) {
 var Schema = db.Schema;
 
 var UserSchema = new Schema({
-  id: String,
   username: String,
   password: String,
-  // timestamp: {
-  //   createdAt: Date,
-  //   updatedAt: Date
-  // },
   links: [
     {
       url: String,
-      baseUrl: Date,
+      baseUrl: String,
       code: String,
       title: String,
       visits: Number,
-      // timestamp: {
-      //   createdAt: Date,
-      //   updatedAt: Date
-      // }
     }
   ]
+}, {
+  timestamps: true
 });
+
+
 
 
 
