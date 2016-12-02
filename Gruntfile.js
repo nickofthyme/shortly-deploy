@@ -95,7 +95,7 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
-    'mochaTest'
+    'mochaTest', 
   ]);
 
   grunt.registerTask('build', [
